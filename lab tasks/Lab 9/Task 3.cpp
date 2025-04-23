@@ -7,14 +7,15 @@ protected:
     int credits;
 
 public:
-    Course(string code, int cr) : courseCode(code), credits(cr) {}
+    Course(const string& code, int cr) : courseCode(code), credits(cr) {}
+    virtual ~Course() {} // Virtual destructor for proper cleanup
     virtual double calculateGrade() = 0;
     virtual void displayInfo() = 0;
 };
 
 class LectureCourse : public Course {
 public:
-    LectureCourse(string code, int cr) : Course(code, cr) {}
+    LectureCourse(const string& code, int cr) : Course(code, cr) {}
 
     double calculateGrade() override {
         return 75.0;
@@ -27,7 +28,7 @@ public:
 
 class LabCourse : public Course {
 public:
-    LabCourse(string code, int cr) : Course(code, cr) {}
+    LabCourse(const string& code, int cr) : Course(code, cr) {}
 
     double calculateGrade() override {
         return 80.0;
@@ -39,8 +40,8 @@ public:
 };
 
 int main() {
-    Course* c1 = new LectureCourse("EE1001", 3);
-    Course* c2 = new LabCourse("EEL1001", 1);
+    Course* c1 = new LectureCourse("CS1002", 3);
+    Course* c2 = new LabCourse("CSL1002", 1);
 
     c1->displayInfo();
     cout << "Final Grade: " << c1->calculateGrade() << "\n\n";
@@ -51,4 +52,5 @@ int main() {
     delete c1;
     delete c2;
 
+    return 0;
 }
