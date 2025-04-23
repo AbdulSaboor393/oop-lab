@@ -10,6 +10,7 @@ public:
     Shipment(string tn, double w) : trackingNumber(tn), weight(w) {}
     virtual double estimateDeliveryTime() = 0;
     virtual void showDetails() = 0;
+    virtual ~Shipment() {}
 };
 
 class AirFreight : public Shipment {
@@ -17,7 +18,7 @@ public:
     AirFreight(string tn, double w) : Shipment(tn, w) {}
 
     double estimateDeliveryTime() override {
-        return 1.5;
+        return 2.0;
     }
 
     void showDetails() override {
@@ -30,7 +31,7 @@ public:
     GroundShipment(string tn, double w) : Shipment(tn, w) {}
 
     double estimateDeliveryTime() override {
-        return 4.0;
+        return 5.0;
     }
 
     void showDetails() override {
@@ -39,8 +40,8 @@ public:
 };
 
 int main() {
-    Shipment* sh1 = new AirFreight("AIR123", 10.5);
-    Shipment* sh2 = new GroundShipment("GRD456", 25.0);
+    Shipment* sh1 = new AirFreight("AFT9876", 15.75);
+    Shipment* sh2 = new GroundShipment("GRND3322", 40.25);
 
     sh1->showDetails();
     cout << "Estimated Delivery: " << sh1->estimateDeliveryTime() << " days\n\n";
@@ -51,5 +52,5 @@ int main() {
     delete sh1;
     delete sh2;
 
-    return 0;
+    return 0;
 }
