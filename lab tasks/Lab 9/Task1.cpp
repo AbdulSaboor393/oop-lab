@@ -44,8 +44,8 @@ public:
 };
 
 int main() {
-    Patient* p1 = new InPatient("Raahim", "101");
-    Patient* p2 = new OutPatient("hassan", "102");
+    Patient* p1 = new InPatient("Asadfattani", "1231");
+    Patient* p2 = new OutPatient("MaqsoodChaiwala", "1232");
 
     p1->displayTreatment();
     p1->calculateCost();
