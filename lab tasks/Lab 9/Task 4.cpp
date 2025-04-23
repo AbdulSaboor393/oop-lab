@@ -5,6 +5,7 @@ class WeatherSensor {
 public:
     virtual void readData() = 0;
     virtual void displayReport() = 0;
+    virtual ~WeatherSensor() {} // Virtual destructor
 };
 
 class Thermometer : public WeatherSensor {
@@ -14,7 +15,7 @@ public:
     }
 
     void displayReport() override {
-        cout << "Temperature: 18 C\n";
+        cout << "Temperature: 18 °C\n";
     }
 };
 
@@ -25,7 +26,7 @@ public:
     }
 
     void displayReport() override {
-        cout << "Pressure: 2014 hPa\n";
+        cout << "Pressure: 1014 hPa\n";
     }
 };
 
@@ -43,4 +44,6 @@ int main() {
     delete s1;
     delete s2;
 
+    return 0;
 }
+
